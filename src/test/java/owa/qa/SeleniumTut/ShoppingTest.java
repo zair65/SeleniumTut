@@ -41,16 +41,13 @@ public class ShoppingTest {
 	}
     
 	@Test
-	public void User() throws InterruptedException { 
+	public void Shopping() throws InterruptedException { 
 	
-		driver.get("http://thedemosite.co.uk/addauser.php"); 
-		AddUser UserTest1 = PageFactory.initElements(driver, AddUser.class);
-		Thread.sleep(5000);
-		UserTest1.AddUserDetails(Constants.USER, Constants.PASS);  
-		driver.get("http://thedemosite.co.uk/login.php"); 
+		driver.get("http://automationpractice.com/index.php"); 
+		Search Dress = PageFactory.initElements(driver, Search.class);	
+		Dress.SearchDetails(Constants.DRESS); 
 		Thread.sleep(3000);
-		UserTest1.AddUserDetails(Constants.USER, Constants.PASS);
-		assertEquals("login was not successful", "**Successful Login**",  driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/big/blockquote/blockquote/font/center/b")).getText());
+		assertEquals("Search not successful", "Printed Summer Dress",  driver.findElement(By.xpath("//*[@id='center_column']/ul/li[1]/div/div[2]/h5/a")).getText());
 		
 }
 	
